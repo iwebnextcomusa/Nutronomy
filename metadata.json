@@ -1,0 +1,6 @@
+{
+  "name": "NU-TRON'-E-ME",
+  "description": "Exploring the Art & Science of Food, Nutrition & Diet. High-end visual experience featuring interactive 3D elements, detailed research explorations, and a secure AI-powered chatbot.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}

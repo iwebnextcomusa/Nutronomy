@@ -1,0 +1,128 @@
+@import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap');
+@import "tailwindcss";
+
+@theme {
+  --font-sans: "Inter", ui-sans-serif, system-ui, sans-serif;
+  --font-display: "Space Grotesk", sans-serif;
+  --font-mono: "JetBrains Mono", ui-monospace, SFMono-Regular, monospace;
+
+  /* Elegant Dark theme design tokens */
+  --color-slate-950: #0A0F0D; /* Background base */
+  --color-slate-900: #141B18; /* Surface/Card base */
+  --color-slate-850: #1E2824; /* Elevated surfaces */
+  --color-slate-800: rgba(255, 255, 255, 0.08); /* Border color */
+  --color-slate-700: #3E4E46; /* Border elevated/muted text */
+  --color-slate-600: #6B7C74; /* Subtitle/secondary text */
+  --color-slate-500: #94A3B8; /* Muted secondary text */
+  --color-slate-400: #94A3B8; /* Muted secondary text */
+  --color-slate-300: #CBD5E1; /* Light slate text */
+  --color-slate-200: rgba(255, 255, 255, 0.08); /* Secondary border */
+  --color-slate-100: rgba(255, 255, 255, 0.04); /* Very light border/overlay */
+
+  /* Teal Accent color mappings */
+  --color-emerald-50: rgba(45, 212, 191, 0.08);
+  --color-emerald-100: rgba(45, 212, 191, 0.15);
+  --color-emerald-400: #5EEAD4;
+  --color-emerald-500: #2DD4BF; /* Accent primary */
+  --color-emerald-600: #2DD4BF; /* Accent primary */
+  --color-emerald-700: #14B8A6; /* Accent secondary */
+  --color-emerald-800: #0D9488; /* Accent dark */
+  --color-emerald-900: #115E59;
+  --color-emerald-950: #0F1A18; /* Deep accent shadow */
+
+  --color-sky-500: #2DD4BF; /* Map sky to teal/emerald accent for coherent color theme */
+  --color-sky-600: #14B8A6;
+  --color-sky-900: #141B18;
+  --color-sky-950: #0A0F0D;
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background: rgba(156, 163, 175, 0.3);
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(156, 163, 175, 0.5);
+}
+
+/* Glassmorphism custom helpers */
+.glass-panel {
+  background: rgba(255, 255, 255, 0.7);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.4);
+}
+
+.dark .glass-panel {
+  background: rgba(20, 27, 24, 0.7);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.glass-card {
+  background: rgba(255, 255, 255, 0.6);
+  backdrop-filter: blur(8px);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+}
+
+.dark .glass-card {
+  background: rgba(20, 27, 24, 0.55);
+  backdrop-filter: blur(8px);
+  border: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: var(--font-sans);
+  background-color: #fcfdfc;
+  color: #1e293b;
+  overflow-x: hidden;
+}
+
+.dark body {
+  background-color: #0A0F0D;
+  color: #F8FAFC;
+}
+
+/* Custom premium hover and accent classes for Elegant Dark Theme */
+.hover-accent-line {
+  position: relative;
+  overflow: hidden;
+}
+
+.hover-accent-line::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 3px;
+  height: 100%;
+  background: #2DD4BF;
+  opacity: 0;
+  transition: opacity 0.25s ease;
+  z-index: 10;
+}
+
+.hover-accent-line:hover::before {
+  opacity: 1;
+}
+
+/* Subtle stroke for title display text */
+.text-stroke-accent {
+  color: transparent;
+  -webkit-text-stroke: 1px var(--text-primary, #F8FAFC);
+}
