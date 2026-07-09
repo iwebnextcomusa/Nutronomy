@@ -136,7 +136,7 @@ export default function ChatbotWidget() {
                   )}
                   <div className={`max-w-[75%] p-3 rounded-2xl text-xs sm:text-sm leading-relaxed ${
                     isAi
-                      ? "bg-white dark:bg-slate-900 text-slate-800 dark:text-slate-200 border border-slate-200/50 dark:border-slate-800 shadow-sm"
+                      ? "bg-emerald-900 dark:bg-emerald-950 text-white font-medium border border-emerald-800 dark:border-emerald-900 shadow-sm"
                       : "bg-emerald-600 text-white shadow-md shadow-emerald-900/10"
                   }`}>
                     {/* Preserve line breaks and support raw markdown-like bullets simply */}

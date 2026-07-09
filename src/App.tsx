@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import Header from "./components/Header";
 import AboutSection from "./components/AboutSection";
 import ResearchSection from "./components/ResearchSection";
@@ -11,9 +11,10 @@ import Footer from "./components/Footer";
 import MoleculeCanvas from "./components/MoleculeCanvas";
 
 import { 
-  ArrowRight, ChevronUp, Brain, Sparkles, Star, FlaskConical, Database
+  ArrowRight, ChevronUp, Brain, Sparkles, Star, FlaskConical, Database, Volume2, VolumeX
 } from "lucide-react";
-import heroImg from "./assets/images/hero_scientific_nutrition_1783620903895.jpg";
+
+const HERO_VIDEO_URL = "https://br9i6jd5fw7yfczo.public.blob.vercel-storage.com/Nutronomy.mp4";
 
 export default function App() {
   const [darkMode, setDarkMode] = useState<boolean>(() => {
@@ -24,6 +25,15 @@ export default function App() {
 
   const [activeSection, setActiveSection] = useState("home");
   const [showScrollTop, setShowScrollTop] = useState(false);
+  const [isHeroMuted, setIsHeroMuted] = useState(true);
+  const videoRef = useRef<HTMLVideoElement>(null);
+
+  // Synchronize dynamic muting state for the video element
+  useEffect(() => {
+    if (videoRef.current) {
+      videoRef.current.muted = isHeroMuted;
+    }
+  }, [isHeroMuted]);
 
   // Apply Dark Mode Class
   useEffect(() => {
@@ -128,9 +138,23 @@ export default function App() {
       <main className="pt-20">
         
         {/* HERO SECTION */}
-        <section id="home" className="relative py-20 lg:py-32 overflow-hidden bg-gradient-to-b from-emerald-50/20 via-white to-white dark:from-emerald-950/10 dark:via-[#080c14] dark:to-[#080c14]">
-          <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-gradient-to-bl from-emerald-500/10 to-transparent rounded-full blur-3xl" />
-          <div className="absolute bottom-0 left-0 w-[400px] h-[400px] bg-gradient-to-tr from-sky-500/10 to-transparent rounded-full blur-3xl" />
+        <section id="home" className="relative py-20 lg:py-32 overflow-hidden bg-[#fcfdfc] dark:bg-slate-950">
+          {/* Background video behind text */}
+          <div className="absolute inset-0 z-0 select-none overflow-hidden">
+            <video
+              ref={videoRef}
+              src={HERO_VIDEO_URL}
+              autoPlay
+              loop
+              playsInline
+              className="w-full h-full object-cover opacity-40 dark:opacity-50"
+            />
+            {/* Gradient overlays to maintain perfect text contrast and blend seamlessly with light/dark theme */}
+            <div className="absolute inset-0 bg-gradient-to-b from-emerald-50/30 via-[#fcfdfc]/80 to-[#fcfdfc] dark:from-emerald-950/15 dark:via-slate-950/80 dark:to-slate-950" />
+          </div>
+
+          <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-gradient-to-bl from-emerald-500/10 to-transparent rounded-full blur-3xl z-0" />
+          <div className="absolute bottom-0 left-0 w-[400px] h-[400px] bg-gradient-to-tr from-sky-500/10 to-transparent rounded-full blur-3xl z-0" />
 
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
             <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
@@ -196,6 +220,28 @@ export default function App() {
               </div>
 
             </div>
+          </div>
+
+          {/* Hero Video Ambient Controls Overlay */}
+          <div className="absolute bottom-6 right-6 z-20 flex items-center gap-2">
+            <button
+              id="btn-hero-mute-toggle"
+              onClick={() => setIsHeroMuted(!isHeroMuted)}
+              className="flex items-center gap-2 px-3 py-2 text-xs font-mono font-medium rounded-xl backdrop-blur-md bg-white/25 dark:bg-slate-950/40 hover:bg-white/40 dark:hover:bg-slate-900/60 text-slate-850 dark:text-slate-200 border border-slate-300/40 dark:border-slate-800/40 transition-all shadow-md cursor-pointer"
+              title={isHeroMuted ? "Unmute Ambient Sound" : "Mute Ambient Sound"}
+            >
+              {isHeroMuted ? (
+                <>
+                  <VolumeX className="w-4 h-4 text-rose-500 animate-pulse" />
+                  <span>MUTED</span>
+                </>
+              ) : (
+                <>
+                  <Volume2 className="w-4 h-4 text-emerald-500 animate-bounce" />
+                  <span>AUDIO ON</span>
+                </>
+              )}
+            </button>
           </div>
         </section>
 
