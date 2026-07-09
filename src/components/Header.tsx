@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
 import { Sun, Moon, Menu, X, Flame, ShieldAlert, Sparkles, Brain } from "lucide-react";
+import logoIcon from "../assets/images/nutronomy_favicon_1783623317550.jpg";
 
 interface HeaderProps {
   darkMode: boolean;
@@ -61,11 +62,16 @@ export default function Header({ darkMode, setDarkMode, activeSection, setActive
           {/* Logo */}
           <div 
             onClick={() => scrollToSection("home")}
-            className="flex items-center gap-2 cursor-pointer group"
+            className="flex items-center gap-3.5 cursor-pointer group"
           >
-            <div className="relative w-10 h-10 rounded-xl bg-gradient-to-tr from-emerald-600 to-sky-500 flex items-center justify-center text-white shadow-md shadow-emerald-950/10 group-hover:scale-105 transition-all">
-              <span className="font-display font-bold text-lg tracking-wider">N</span>
-              <div className="absolute -top-1 -right-1 w-3 h-3 rounded-full bg-amber-500 border border-white dark:border-slate-900 animate-pulse" />
+            <div className="relative w-11 h-11 rounded-xl overflow-hidden border border-slate-200 dark:border-slate-800 bg-white p-0.5 shadow-sm flex items-center justify-center group-hover:scale-105 transition-all">
+              <img 
+                src={logoIcon} 
+                alt="Nutronomy Icon" 
+                className="w-full h-full object-cover rounded-lg"
+                referrerPolicy="no-referrer"
+              />
+              <div className="absolute top-0 right-0 w-2.5 h-2.5 rounded-full bg-emerald-500 border border-white dark:border-slate-900 animate-pulse" />
             </div>
             <div className="flex flex-col">
               <span className="font-display font-bold text-lg leading-tight tracking-wider text-slate-900 dark:text-white">

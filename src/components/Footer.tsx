@@ -1,4 +1,5 @@
 import { Twitter, Linkedin, Youtube, Leaf, Shield } from "lucide-react";
+import logoIcon from "../assets/images/nutronomy_favicon_1783623317550.jpg";
 
 export default function Footer() {
   const currentYear = new Date().getFullYear();
@@ -19,9 +20,14 @@ export default function Footer() {
           
           {/* Logo Brand Info */}
           <div className="md:col-span-5 space-y-4">
-            <div className="flex items-center gap-2">
-              <div className="w-9 h-9 rounded-xl bg-gradient-to-tr from-emerald-600 to-sky-500 flex items-center justify-center text-white font-bold font-display text-base">
-                N
+            <div className="flex items-center gap-3">
+              <div className="relative w-9 h-9 rounded-xl overflow-hidden border border-slate-800 bg-white p-0.5 shadow-sm flex items-center justify-center">
+                <img 
+                  src={logoIcon} 
+                  alt="Nutronomy Icon" 
+                  className="w-full h-full object-cover rounded-lg"
+                  referrerPolicy="no-referrer"
+                />
               </div>
               <span className="font-display font-bold text-lg text-white tracking-wider">
                 NU-TRON'-E-ME
